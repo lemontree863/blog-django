@@ -31,6 +31,7 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    views = models.PositiveIntegerField(default=0, editable=False)  # 阅读量
 
     class Meta:
         ordering = ['-created_time']
@@ -56,3 +57,8 @@ class Post(models.Model):
         self.excerpt = strip_tags(md.convert(self.body))[:54]
 
         super().save(*args, **kwargs)
+
+    # 增加阅读量
+    def increase_views(self):
+        self.views += 1
+        self.save(update_fields=['views'])

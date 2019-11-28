@@ -33,6 +33,7 @@ def deploy(c):
 
     # 迁移数据库, 收集静态文件
     with c.cd(project_root_path):
+        c.run('python3 manage.py makemigrations')
         c.run('python3 manage.py migrate')
         c.run('python3 manage.py collectstatic --noinput')
 

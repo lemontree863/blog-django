@@ -35,6 +35,8 @@ def index(request):
 
 def detail(request, pk):
     post = get_object_or_404(Post, id=pk)  # 第一个参数：类 第二个参数类属性id=？必需指定id,否则报错
+    # 阅读量+1
+    post.increase_views()
     md = markdown.Markdown(extensions=[  # 实例化markdown , 大写的Markdown
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',
