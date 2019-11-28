@@ -29,6 +29,7 @@ def deploy(c):
         cmd = 'git pull'
         responders = _get_github_auth_responders()
         c.run(cmd, watchers=responders)
+        # c.run(cmd)
 
     # 迁移数据库, 收集静态文件
     with c.cd(project_root_path):
