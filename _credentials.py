@@ -1,2 +1,2 @@
-github_username = ''
-github_password = ''
+github_username = 'yuefeng863@gmail.com'
+github_password = '2014TPzj!'
